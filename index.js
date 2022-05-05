@@ -1,4 +1,15 @@
-function valMinMax(arr){}
+function valMinMax(arr){
+    let sums = []
+
+    for (let i = 0; i < arr.length; i++) {
+        let other = [...arr]
+        other.splice(i, 1)
+        sums.push(other.reduce((a, b) => a + b, 0))
+    }
+
+    return Math.min(...sums) + " " + Math.max(...sums)
+}
+
 function matriceCaree(arr){
 
     let sum1 = 0, sum2 = 0
@@ -12,6 +23,8 @@ function matriceCaree(arr){
     return Math.abs(sum1 - sum2)
 }
 function camelCase(str){
+
+    if(str == "") return 0
 
     let count = 1
     for(let i = 0; i < str.length; i++){
@@ -53,8 +66,6 @@ function arcadeRank(top_scores, jeu){
     // console.log(top_scores_with_no_red)
     // console.log(top_scores_with_no_red.reverse())
 }
-
-arcadeRank([100,90,90,80], [70,80,105])
 
 module.exports = { valMinMax, matriceCaree, camelCase, arcadeRank };
 
