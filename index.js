@@ -72,10 +72,7 @@ function arcadeRank(top_scores, jeu){
 }
 
 console.log(
-    arcadeRank(
-        [100,90,90,80],
-        [70,80,105]
-    )
+    valMinMax([1,-56,0,2,6])
 )
 
 module.exports = { valMinMax, matriceCaree, camelCase, arcadeRank };
