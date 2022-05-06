@@ -1,4 +1,8 @@
 function valMinMax(arr){
+
+    if(!arr.length) return "0 0"
+
+
     let sums = []
 
     for (let i = 0; i < arr.length; i++) {
@@ -37,34 +41,8 @@ function camelCase(str){
     return count
 
 }
+
 function arcadeRank(top_scores, jeu){
-
-    // let places = []
-
-    // //avoir un tableau sans rédondance
-    // let top_scores_with_no_red = []
-    // for(let i = 0; i < top_scores.length; i++){
-    //     if(top_scores[i] !== top_scores[i + 1]) top_scores_with_no_red.push(top_scores[i])
-    // }
-
-    // let reversed_scores = top_scores_with_no_red.reverse()
-
-    // parcourir les scores du joueur
-        //pour chaque score, parcourir les top_scores en partant de la fin
-            //trouver la place du score en checkant si le score est supérieur au score des top_scores
-            //garder la place dans un tableau
-
-
-
-    // for(let i = 0; i < jeu.length; i++){
-    //     let place = top_scores.length
-    //     for(let t = top_scores.length-1; t >= 0; t--){
-
-    //     }
-    // // }
-
-    // console.log(top_scores_with_no_red)
-    // console.log(top_scores_with_no_red.reverse())
 }
 
 module.exports = { valMinMax, matriceCaree, camelCase, arcadeRank };
