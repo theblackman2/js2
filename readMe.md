@@ -3,7 +3,7 @@
     - Le joueur avec le score le plus élevé est classé numéro 1 dans le classement.
     - Les joueurs qui ont des scores égaux reçoivent le même numéro de classement et le ou les joueurs suivants reçoivent le numéro de classement immédiatement suivant.
 
-    Exemple: top_scores = [100,90,90,80], jeu = [70,80,105].
+    Exemple: top_scores = .[100,90,90,80], jeu = [70,80,105]
     Les joueurs classés auront respectivement la place 1, 2, 2 et 3 respectivement. Si les scores du joueur sont successivement de 70, 80 et 105, leur classement après chaque match est 4e, 3e et 1er. Renvoyez [4,3,1].
 
 2. Etant donné une matrice carrée, calculez la différence absolue entre les sommes de ses diagonales. [`matriceCaree`]
