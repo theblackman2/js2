@@ -1,82 +1,76 @@
-function valMinMax(arr){
+function valMinMax(arr) {
 
-    if(!arr.length) return "0 0"
+  let min = arr.reduce((a, b) => a + b, 0)
+  let max = -min
 
+  for (let i = 0; i < arr.length; i++) {
+    let other = [...arr]
+    other.splice(i, 1)
+    let sum = other.reduce((a, b) => a + b, 0)
+    if (sum > max) {
+      max = sum
+    } else if (sum < min) min = sum
+  }
 
-    let sums = []
+  return min + " " + max
+}
+function matriceCaree(arr) {
 
-    for (let i = 0; i < arr.length; i++) {
-        let other = [...arr]
-        other.splice(i, 1)
-        sums.push(other.reduce((a, b) => a + b, 0))
+  let sum1 = 0, sum2 = 0
+  for (let i = 0; i < arr.length; i++) {
+    // première diagonale
+    sum1 += arr[i][i]
+    //deuxième diagonale
+    sum2 += arr[i][arr[i].length - (i + 1)]
+  }
+
+  return Math.abs(sum1 - sum2)
+}
+function camelCase(str) {
+
+  if (str == "") return 0
+
+  let count = 1
+  for (let i = 0; i < str.length; i++) {
+    // la lettre est en majuscule
+    if (str[i] == str[i].toUpperCase()) {
+      count += 1
     }
+  }
 
-    return Math.min(...sums) + " " + Math.max(...sums)
+  return count
+
 }
 
-function matriceCaree(arr){
+function arcadeRank(top_scores, jeu) {
 
-    let sum1 = 0, sum2 = 0
-    for(let i = 0; i < arr.length; i++){
-        // première diagonale
-        sum1 += arr[i][i]
-        //deuxième diagonale
-        sum2 += arr[i][arr[i].length - (i+1)]
-    }
+  let scores = []
+  //ajouter un élément et ordonner le tableau
+  
+  //ajouter l'élément au tableau et retourner sa place
+  let putInRank = function(score){
+    //supprimer les redondances
+    let scores_ordered = [...new Set(top_scores)]
+    //ajouter le score
+    scores_ordered.push(score)
+    //ordonner le tableau
+    scores_ordered.sort((a, b) => b - a)
+    //returner la place du score
+    return scores_ordered.indexOf(score) + 1
+  }
 
-    return Math.abs(sum1 - sum2)
-}
-function camelCase(str){
+  for(let i = 0; i < jeu.length; i++){
+    let place = putInRank(jeu[i])
+    let default_place = Math.min(...scores, place)
 
-    if(str == "") return 0
+    scores.push(default_place)
+  }
 
-    let count = 1
-    for(let i = 0; i < str.length; i++){
-        // la lettre est en majuscule
-        if(str[i] == str[i].toUpperCase()){
-            count += 1
-        }
-    }
+  return scores
 
-    return count
-
-}
-
-function arcadeRank(top_scores, jeu){
-    //effacer la rédondance dans le tableau
-    let top_scores_red = []
-    for(let i = 0; i < top_scores.length; i++){
-        if(top_scores[i] !== top_scores[i + 1]) top_scores_red.push(top_scores[i])
-    }
-
-    let scores = []
-
-    for(let i = 0; i < jeu.length; i++){
-        let default_place = top_scores_red.length + 1
-        for(let t = 0; t < top_scores_red.length; t++){
-            console.log(jeu[i], top_scores_red[t])
-            if(jeu[i] > top_scores_red[t]){
-                default_place = 1
-                break
-            }
-            if(jeu[i] < top_scores_red[t]){
-                default_place = top_scores_red.indexOf(top_scores_red[t]) + 2
-            }else if(jeu[i] = top_scores_red[t]){
-                default_place = top_scores_red.indexOf(top_scores_red[t]) + 1
-            }
-        }
-        scores.push(default_place)
-    }
-
-    return scores
+  
 }
 
-console.log(
-    arcadeRank(
-        [100,90,90,80],
-        [70,80,105]
-    )
-)
 
 module.exports = { valMinMax, matriceCaree, camelCase, arcadeRank };
 
