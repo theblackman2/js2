@@ -1,16 +1,7 @@
 function valMinMax(arr) {
-
-  let min = arr.reduce((a, b) => a + b, 0)
-  let max = -min
-
-  for (let i = 0; i < arr.length; i++) {
-    let other = [...arr]
-    other.splice(i, 1)
-    let sum = other.reduce((a, b) => a + b, 0)
-    if (sum > max) {
-      max = sum
-    } else if (sum < min) min = sum
-  }
+  let sums = arr.reduce((a, b) => a+b, 0)
+  let min = sums - Math.max(...arr)
+  let max = sums - Math.min(...arr)
 
   return min + " " + max
 }
